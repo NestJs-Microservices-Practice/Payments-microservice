@@ -20,8 +20,12 @@ async function bootstrap() {
     transport: Transport.NATS,
     options: {
       servers: envs.natsServers
-    }
-  })
+    },
+  },
+  {
+    inheritAppConfig: true
+  }
+  );
   logger.log(`Payments-ms is running on: ${envs.port}`);
   await app.listen(envs.port);
   app.startAllMicroservices();
